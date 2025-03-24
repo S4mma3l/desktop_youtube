@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transcripción y Análisis de Videos</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="prism.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Transcripción y Análisis de Videos</h1>
+        <div class="input-area">
+            <label for="videoUrl">URL del video de YouTube:</label>
+            <input type="text" id="videoUrl" placeholder="Introduce la URL del video de YouTube">
+            <button id="transcribirBtn">Transcribir y Analizar</button>
+        </div>
+        <div id="loading" class="hidden">
+            Procesando...
+            <div class="dot-loader">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+        <div id="error" class="hidden error-message"></div>
+        <div id="transcripcion" class="result hidden">
+            <h2>Transcripción:</h2>
+            <div id="transcripcionTexto"></div>
+            <button class="copy-button" data-target="transcripcionTexto">Copiar Transcripción</button>
+        </div>
+        <div id="analisis" class="result hidden">
+            <h2>Análisis:</h2>
+            <div id="analisisTexto">
+                <pre><code class="language-text"></code></pre>
+            </div>
+            <button class="copy-button" data-target="analisisTexto">Copiar Análisis</button>
+        </div>
+        <div id="ejemplos" class="result hidden">
+            <h2>Ejemplos de Código:</h2>
+            <div id="ejemplosTexto"><pre><code class="language-javascript"></code></pre></div>
+            <button class="copy-button" data-target="ejemplosTexto">Copiar Ejemplos</button>
+        </div>
+        <div id="markdownContent" class="result hidden">
+            <h2>Análisis (Markdown):</h2>
+            <div id="markdownText"></div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="script.js"></script>
+    <script src="prism.js"></script>
+</body>
+</html>
