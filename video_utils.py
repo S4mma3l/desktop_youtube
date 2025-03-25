@@ -73,6 +73,9 @@ def descargar_video(url, ruta_destino="."):
             'allsubtitles': False,
             'subtitleslangs': ['en'],
             'outtmpl': os.path.join(ruta_destino, '%(title)s.%(ext)s'),
+            'retries': 5,  # Reintentar la descarga varias veces
+            'fragment_retries': 5, # Reintentar la descarga de fragmentos varias veces
+            'continuedl': True #Reanudar descargas interrumpidas
         }
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(url, download=False)
