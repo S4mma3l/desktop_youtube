@@ -1,0 +1,8 @@
+[phases.setup]
+aptPkgs = [
+  "ffmpeg",
+  "libsm6",
+  "libxext6",
+  "python3-pil",
+  "frei0r-plugins"
+]
