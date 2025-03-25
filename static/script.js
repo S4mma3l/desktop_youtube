@@ -83,7 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch('https://web-production-eab4.up.railway.app/transcribir', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Origin': 'https://web-production-eab4.up.railway.app'
                 },
                 body: JSON.stringify({ url })
             }); // http://localhost:5000/transcribir
