@@ -116,17 +116,22 @@ button:hover::before {
 .dot {
     width: 12px;
     height: 12px;
-    background-color: #F6F0F0;
     border-radius: 50%;
     margin: 0 6px;
     animation: dot-pulse 1.5s infinite ease-in-out;
 }
 
+.dot:nth-child(1) {
+    background-color: #FFE9D6; 
+}
+
 .dot:nth-child(2) {
+    background-color: #A7D0CD; 
     animation-delay: 0.5s;
 }
 
 .dot:nth-child(3) {
+    background-color: #7B6079;
     animation-delay: 1s;
 }
 
@@ -172,6 +177,9 @@ button:hover::before {
 #markdownContent h2 {
     color: #ecf0f1;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    overflow-wrap: break-word; /* Permite que las palabras largas se dividan */
+    word-break: break-all; /* Fuerza la división de palabras si es necesario */
+    overflow: auto; /* Agrega barras de desplazamiento si el contenido excede el tamaño */
 }
 
 #markdownText {

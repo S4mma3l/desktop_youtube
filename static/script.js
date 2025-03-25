@@ -53,8 +53,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Limpiar los resultados de la búsqueda anterior
         transcripcionTextoDiv.innerHTML = "";
-        analisisTextoDiv.querySelector('code').textContent = ""; // Limpiar el contenido de texto plano
-        ejemplosTextoDiv.innerHTML = "";
+
+        //Muestra análisis en texto plano
+        if (analisisTextoDiv && analisisTextoDiv.querySelector('code')) {
+            analisisTextoDiv.querySelector('code').textContent = "";
+        }
+        if (ejemplosTextoDiv && ejemplosTextoDiv.querySelector('code')) {
+            ejemplosTextoDiv.querySelector('code').textContent = "";
+        }
         markdownTextDiv.innerHTML = "";
 
         const url = videoUrlInput.value;
@@ -93,10 +99,15 @@ document.addEventListener('DOMContentLoaded', () => {
             transcripcionTextoDiv.innerHTML = data.transcripcion.split('\n').map(p => `<p>${p}</p>`).join('');
 
             // Mostrar el análisis en formato texto plano
-            analisisTextoDiv.querySelector('code').textContent = data.analisis;
+            if (analisisTextoDiv && analisisTextoDiv.querySelector('code')) {
+                analisisTextoDiv.querySelector('code').textContent = data.analisis;
+            }
 
             // Mostrar el análisis y los ejemplos de código con resaltado de sintaxis
-            ejemplosTextoDiv.querySelector('code').textContent = data.ejemplos;
+            if (ejemplosTextoDiv && ejemplosTextoDiv.
+querySelector('code')) {
+                ejemplosTextoDiv.querySelector('code').textContent = data.ejemplos;
+            }
             Prism.highlightAll();
 
             // Procesar el contenido markdown y mostrarlo
@@ -113,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
             errorDiv.classList.remove('hidden');
         } finally {
             loadingDiv.classList.add('hidden');
+            videoUrlInput.value = ""; // Limpiar el campo de entrada
         }
     });
 });
