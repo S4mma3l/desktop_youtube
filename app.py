@@ -7,6 +7,10 @@ from gemini_utils import analizar_y_mejorar_texto, generar_ejemplos_codigo
 from file_utils import generar_documento_texto, eliminar_archivo
 import os
 import traceback
+import logging  # Importa el módulo de logging
+
+# Configura el logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 app = Flask(__name__, static_folder='static')
 

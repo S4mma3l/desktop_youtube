@@ -1,7 +1,5 @@
 import os
 
-import os
-
 def generar_documento_texto(texto, ruta_destino):
     try:
         print(f"Intentando escribir en el archivo: {ruta_destino}") # Depuración

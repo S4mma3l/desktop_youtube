@@ -1,4 +1,5 @@
 import google.generativeai as genai
+import logging
 
 def analizar_y_mejorar_texto(texto, gemini_api_key):
     genai.configure(api_key=gemini_api_key)
@@ -8,7 +9,7 @@ def analizar_y_mejorar_texto(texto, gemini_api_key):
         response = model.generate_content(prompt)
         return response.text
     except Exception as e:
-        print(f"Error al interactuar con Gemini: {e}")
+        logging.error(f"Error al interactuar con Gemini: {e}")
         return "Error al analizar el texto con Gemini."
 
 def generar_ejemplos_codigo(texto, gemini_api_key):
@@ -21,5 +22,5 @@ def generar_ejemplos_codigo(texto, gemini_api_key):
             return "No se encontraron ejemplos de código relevantes."
         return response.text
     except Exception as e:
-        print(f"Error al interactuar con Gemini: {e}")
+        logging.error(f"Error al interactuar con Gemini: {e}")
         return "No se encontraron ejemplos de código relevantes."

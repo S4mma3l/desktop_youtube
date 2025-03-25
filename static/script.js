@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const markdownTextDiv = document.getElementById('markdownText');
 
     // Función para validar la URL de YouTube
-    /* function isValidYouTubeUrl(url) {
+    function isValidYouTubeUrl(url) {
         try {
             const parsedUrl = new URL(url);
             if (parsedUrl.hostname.includes('youtube.com') || parsedUrl.hostname.includes('youtu.be')) {
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (e) {
             return false;
         }
-    } */
+    }
 
     // Función para copiar texto al portapapeles
     function copyToClipboard(elementId) {
