@@ -44,7 +44,7 @@ def transcribir():
         if not es_url_youtube(url_video):
             return jsonify({'error': 'URL de YouTube inválida.'}), 400
 
-        ruta_video = descargar_video(url_video, config.FFMPEG_PATH, UPLOAD_FOLDER)
+        ruta_video = descargar_video(url_video, UPLOAD_FOLDER) # config.FFMPEG_PATH,
         if not ruta_video or not os.path.exists(ruta_video):
             return jsonify({'error': 'Error al descargar o encontrar el video.'}), 400
 
