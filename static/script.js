@@ -80,13 +80,13 @@ document.addEventListener('DOMContentLoaded', () => {
         markdownContentDiv.classList.add('hidden');
 
         try {
-            const response = await fetch('http://localhost:5000/transcribir', {
+            const response = await fetch('https://desktopyoutube-production.up.railway.app/transcribir', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ url })
-            });
+            }); // http://localhost:5000/transcribir
 
             if (!response.ok) {
                 const errorData = await response.json();

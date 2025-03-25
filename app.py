@@ -11,7 +11,7 @@ import traceback
 app = Flask(__name__, static_folder='static')
 
 # Configurar CORS
-origins = ["https://desktopyoutube-production.up.railway.app", "http://localhost:5000"]  # Ajusta esto para tus orígenes
+origins = ["https://desktopyoutube-production.up.railway.app"]  # Ajusta esto para tus orígenes , "http://localhost:5000"
 CORS(app, resources={r"/*": {"origins": origins}}, supports_credentials=True)
 
 config = Config()
@@ -152,5 +152,5 @@ def transcribir():
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    # app.run(host= 'https://desktopyoutube-production.up.railway.app', port=port)
-    app.run(debug=True, host='0.0.0.0', port=port)
+    app.run(host= '0.0.0.0', port=port)
+    # app.run(debug=True, host='0.0.0.0', port=port)

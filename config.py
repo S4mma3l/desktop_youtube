@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class Config:
-    DEBUG = os.getenv("DEBUG", True)  # Habilita el modo debug por defecto
+    DEBUG = os.getenv("DEBUG", False)  # Habilita el modo debug por defecto
     GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
     FFMPEG_PATH = os.getenv("FFMPEG_PATH", "ffmpeg")
     TRANSCRIPTION_LANGUAGE = os.getenv("TRANSCRIPTION_LANGUAGE", "es-ES") # Default spanish transcription
