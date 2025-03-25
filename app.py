@@ -144,4 +144,4 @@ def transcribir():
     return jsonify({'transcripcion': transcripcion, 'analisis': analisis, 'ejemplos': ejemplos})
 
 if __name__ == '__main__':
-    app.run(debug=config.DEBUG)
+    app.run(debug=config.DEBUG, host='https://desktopyoutube-production.up.railway.app', port=5000) # Especifica el puerto y el host
