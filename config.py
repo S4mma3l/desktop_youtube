@@ -6,7 +6,7 @@ load_dotenv()
 class Config:
     DEBUG = os.getenv("DEBUG", True)  # Habilita el modo debug por defecto
     GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-    FFMPEG_PATH = os.getenv("FFMPEG_PATH")
+    FFMPEG_PATH = os.getenv("FFMPEG_PATH", "ffmpeg")
     TRANSCRIPTION_LANGUAGE = os.getenv("TRANSCRIPTION_LANGUAGE", "es-ES") # Default spanish transcription
     AUDIO_SEGMENT_DURATION = int(os.getenv("AUDIO_SEGMENT_DURATION", 30))  # Duración del segmento en segundos
     UPLOAD_FOLDER = os.getenv("UPLOAD_FOLDER", "temp") #Carpeta temporal para guardar los archivos
