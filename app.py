@@ -9,7 +9,8 @@ import os
 import traceback
 
 app = Flask(__name__, static_folder='static')  # Especifica la carpeta de archivos estáticos
-CORS(app, resources={r"/*": {"origins": "*"}})
+origins = ["https://desktopyoutube-production.up.railway.app","http://localhost:5000"]
+CORS(app, resources={r"/*": {"origins": origins, "supports_credentials": True}})
 config = Config()
 config.ensure_upload_folder_exists()
 UPLOAD_FOLDER = config.UPLOAD_FOLDER
@@ -144,4 +145,5 @@ def transcribir():
     return jsonify({'transcripcion': transcripcion, 'analisis': analisis, 'ejemplos': ejemplos})
 
 if __name__ == '__main__':
-    app.run(debug=config.DEBUG, host='0.0.0.0', port=5000) # Especifica el puerto y el host
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=True, host='0.0.0.0', port=port)
