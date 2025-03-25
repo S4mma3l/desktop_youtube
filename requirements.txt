@@ -1,7 +1,7 @@
 flask
 flask-cors
 python-dotenv
-yt-dlp
+yt-dlp==2024.12.13
 moviepy==1.0.3
 SpeechRecognition
 pydub
