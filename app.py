@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, send_from_directory
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from config import Config
 from video_utils import descargar_video, convertir_video_a_audio, es_url_youtube
 from audio_utils import segmentar_audio, transcribir_segmentos
@@ -8,22 +8,28 @@ from file_utils import generar_documento_texto, eliminar_archivo
 import os
 import traceback
 
-app = Flask(__name__, static_folder='static')  # Especifica la carpeta de archivos estáticos
-origins = ["https://desktopyoutube-production.up.railway.app","http://localhost:5000"]
-CORS(app, resources={r"/*": {"origins": origins, "supports_credentials": True}})
+app = Flask(__name__, static_folder='static')
+
+# Configurar CORS
+origins = ["https://desktopyoutube-production.up.railway.app", "http://localhost:5000"]  # Ajusta esto para tus orígenes
+CORS(app, resources={r"/*": {"origins": origins}}, supports_credentials=True)
+
 config = Config()
 config.ensure_upload_folder_exists()
 UPLOAD_FOLDER = config.UPLOAD_FOLDER
 
 @app.route('/')
+@cross_origin(origins=origins, supports_credentials=True)
 def index():
-    return send_from_directory(app.static_folder, 'index.html')  # Sirve index.html
+    return send_from_directory(app.static_folder, 'index.html')
 
 @app.route('/<path:path>')
+@cross_origin(origins=origins, supports_credentials=True)
 def serve_static(path):
     return send_from_directory(app.static_folder, path)
 
-@app.route('/transcribir', methods=['POST'])
+@app.route('/transcribir', methods=['POST', 'OPTIONS'])  # Permitir OPTIONS
+@cross_origin(origins=origins, supports_credentials=True)
 def transcribir():
     ruta_audio = None
     ruta_video = None
@@ -146,4 +152,5 @@ def transcribir():
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    app.run(debug=True, host='0.0.0.0', port=port)
+    app.run(host='0.0.0.0', port=port)
+    # app.run(debug=True, host='0.0.0.0', port=port)
