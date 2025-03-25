@@ -6,9 +6,4 @@ moviepy
 SpeechRecognition
 pydub
 gemini-ai
-flask
-yt-dlp
-moviepy
-SpeechRecognition
-pydub
 celery
