@@ -11,7 +11,7 @@ import traceback
 app = Flask(__name__, static_folder='static')
 
 # Configurar CORS
-origins = ["https://desktopyoutube-production.up.railway.app"]  # Ajusta esto para tus orígenes , "http://localhost:5000"
+origins = ["https://web-production-eab4.up.railway.app"]  # Ajusta esto para tus orígenes , "http://localhost:5000"
 CORS(app, resources={r"/*": {"origins": origins}}, supports_credentials=True)
 
 config = Config()
