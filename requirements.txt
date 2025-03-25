@@ -2,7 +2,7 @@ flask
 flask-cors
 python-dotenv
 yt-dlp
-moviepy
+moviepy==1.0.3
 SpeechRecognition
 pydub
 gemini-ai

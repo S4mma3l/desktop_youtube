@@ -1,8 +1,27 @@
 [phases.setup]
+pkgs = ["python3"]
 aptPkgs = [
   "ffmpeg",
   "libsm6",
   "libxext6",
   "python3-pil",
-  "frei0r-plugins"
+  "frei0r-plugins",
+  "gcc",
+  "g++",
+  "make",
+  "libavformat-dev",
+  "libavcodec-dev",
+  "libswscale-dev",
+  "libgomp1"
 ]
+
+[phases.build]
+  cmds = [
+    "pip install -r requirements.txt"
+  ]
+
+[phases.start]
+  cmd = "python app.py"
+
+[environment]
+  PYTHON_VERSION = "3.9"
