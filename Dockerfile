@@ -21,5 +21,14 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Expon el puerto que tu aplicación usa (si aplica)
 # EXPOSE 5000
 
+# Crea un script para limpiar la carpeta temporal
+RUN echo "find /app/temp/ -type f -mmin +60 -delete" > /app/clean_temp.sh && chmod +x /app/clean_temp.sh
+
+# Añade la tarea cron al crontab
+RUN echo "* * * * * /app/clean_temp.sh" >> /etc/crontab
+
+# Asegúrate de que el archivo crontab tenga la sintaxis correcta
+RUN crontab /etc/crontab
+
 # Define el comando para ejecutar tu aplicación
 CMD ["python", "app.py"]
