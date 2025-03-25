@@ -6,7 +6,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(to bottom, #D2EBE9, #3C415C, #301B3F);
+    background: linear-gradient(to bottom, #3C415C, #301B3F);
     color: #F6F0F0;
 }
 
