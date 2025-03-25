@@ -6,7 +6,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ffmpeg \
     git \
     cron \ # Instala el servicio cron
-    cron \ # Instala el comando crontab
     nano \ # o vim
     curl \
     ca-certificates \
@@ -29,6 +28,9 @@ RUN echo "find /app/temp/ -type f -mmin +60 -delete" > /app/clean_temp.sh && chm
 
 # Añade la tarea cron al crontab
 RUN echo "* * * * * /app/clean_temp.sh" >> /etc/crontab
+
+# Inicia el servicio cron
+RUN service cron start
 
 # Asegúrate de que el archivo crontab tenga la sintaxis correcta
 RUN crontab /etc/crontab
