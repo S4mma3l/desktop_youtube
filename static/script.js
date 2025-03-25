@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         markdownContentDiv.classList.add('hidden');
 
         try {
-            const response = await fetch('https://desktopyoutube-production.up.railway.app:5000/transcribir', {
+            const response = await fetch('https://desktopyoutube-production.up.railway.app/transcribir', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
