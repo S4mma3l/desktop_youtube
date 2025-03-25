@@ -5,8 +5,7 @@ FROM python:3.11-slim-buster
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ffmpeg \
     git \
-    cron \ # Instala el servicio cron
-    nano \ # o vim
+    cron \
     curl \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/*
