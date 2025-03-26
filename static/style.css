@@ -1,13 +1,49 @@
+/* style.css */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     min-height: 100vh;
     background: linear-gradient(to bottom, #3C415C, #301B3F);
     color: #F6F0F0;
+}
+
+.header-info {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ecf0f1;
+    padding: 10px 20px;
+    font-size: 0.9em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+}
+
+.header-info span {
+    margin: 0 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.header-info a {
+    color: #ecf0f1; /* Color del texto del enlace */
+    text-decoration: none; /* Elimina el subrayado */
+    font-weight: bold; /* Pone el texto en negrita */
+    margin: 0 10px; /* Añade un margen */
+}
+
+.header-info a:hover {
+    text-decoration: underline; /* Subraya al pasar el ratón */
 }
 
 .container {
@@ -19,6 +55,7 @@ body {
     box-shadow: 0 8px 16px #23103A;
     backdrop-filter: blur(30px);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 20px;
 }
 
 h1 {
