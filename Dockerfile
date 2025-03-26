@@ -23,16 +23,16 @@ RUN pip install --no-cache-dir -r requirements.txt
 # EXPOSE 5000
 
 # Crea un script para limpiar la carpeta temporal
-RUN echo "find /app/temp/ -type f -mmin +60 -delete" > /app/clean_temp.sh && chmod +x /app/clean_temp.sh
+# RUN echo "find /app/temp/ -type f -mmin +60 -delete" > /app/clean_temp.sh && chmod +x /app/clean_temp.sh
 
 # Añade la tarea cron al crontab
-RUN echo "* * * * * /app/clean_temp.sh" >> /etc/crontab
+# RUN echo "* * * * * /app/clean_temp.sh" >> /etc/crontab
 
 # Inicia el servicio cron
-RUN service cron start
+# RUN service cron start
 
 # Asegúrate de que el archivo crontab tenga la sintaxis correcta
-RUN crontab /etc/crontab
+# RUN crontab /etc/crontab
 
 # Define el comando para ejecutar tu aplicación
 CMD ["python", "app.py"]
