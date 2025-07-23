@@ -60,6 +60,7 @@ def descargar_video(url, ffmpeg_location, ruta_destino="."):
         print(f"Error inesperado al descargar el video: {e}")
         return None
 '''
+
 def descargar_video(url, ruta_destino="."):
     try:
         if not es_url_youtube(url):
@@ -110,3 +111,50 @@ def convertir_video_a_audio(ruta_video, ruta_destino="."):
     except Exception as e:
         print(f"Error al convertir el video a audio: {e}")
         return None
+
+'''
+def descargar_video(url, ruta_destino="."):
+    try:
+        if not es_url_youtube(url):
+            raise ValueError("La URL no es una URL de YouTube válida.")
+
+        # Opcional: Ruta al archivo de cookies. Puedes obtenerla de Config o una variable de entorno.
+        # Asegúrate de que este archivo exista en tu entorno de ejecución (especialmente en Docker)
+        # cookie_file_path = Config.COOKIES_FILE_PATH # Asumiendo que lo añades en config.py
+        cookie_file_path = os.getenv('YTDLP_COOKIES_FILE', 'cookies.txt') # O usa una variable de entorno
+
+        ydl_opts = {
+            'noplaylist': True,
+            'quiet': True,
+            'no_warnings': True,
+            'simulate': False, # Si usas simulate=True, no descargará realmente
+            'writesubtitles': False,
+            'allsubtitles': False,
+            'subtitleslangs': ['en'],
+            'outtmpl': os.path.join(ruta_destino, '%(title)s.%(ext)s'),
+            'retries': 5,
+            'fragment_retries': 5,
+            'continuedl': True,
+            'cookiefile': cookie_file_path if os.path.exists(cookie_file_path) else None, # Añadir esta línea
+            'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4', # Mover aquí para que se aplique desde el principio
+            'verbose': True,
+        }
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+            info_dict = ydl.extract_info(url, download=False)
+            video_titulo = info_dict.get('title', None)
+            video_titulo_limpio = limpiar_nombre_archivo(video_titulo)
+            video_extension = "mp4"
+            video_ruta = os.path.join(ruta_destino, f'{video_titulo_limpio}.{video_extension}')
+
+        # Realizar la descarga ahora que la ruta final está definida
+        ydl_opts['outtmpl'] = video_ruta
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+            ydl.download([url])
+            return video_ruta
+    except youtube_dl.utils.DownloadError as e:
+        print(f"Error al descargar el video: {e}")
+        return None
+    except Exception as e:
+        print(f"Error inesperado al descargar el video: {e}")
+        return None
+'''
