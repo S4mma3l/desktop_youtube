@@ -13,11 +13,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Establece el directorio de trabajo dentro del contenedor
 WORKDIR /app
 
+# Copia solo requirements.txt primero para aprovechar la caché de Docker si solo cambian los archivos de código
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
 # Copia los archivos de tu aplicación al contenedor
 COPY . /app
 
-# Instala las dependencias de Python
-RUN pip install --no-cache-dir -r requirements.txt
 
 # Expon el puerto que tu aplicación usa (si aplica)
 # EXPOSE 5000

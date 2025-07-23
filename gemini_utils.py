@@ -3,7 +3,7 @@ import logging
 
 def analizar_y_mejorar_texto(texto, gemini_api_key):
     genai.configure(api_key=gemini_api_key)
-    model = genai.GenerativeModel('gemini-2.0-flash')
+    model = genai.GenerativeModel('gemini-2.5-flash')
     prompt = f"""Actúa como un analista de contenido. Analiza el siguiente texto y mejóralo para que sea más claro, conciso y atractivo. Corrige la gramática, la ortografía y el estilo. Haz sugerencias para mejorar la estructura y la fluidez del texto: {texto}"""
     try:
         response = model.generate_content(prompt)
@@ -14,7 +14,7 @@ def analizar_y_mejorar_texto(texto, gemini_api_key):
 
 def generar_ejemplos_codigo(texto, gemini_api_key):
     genai.configure(api_key=gemini_api_key)
-    model = genai.GenerativeModel('gemini-2.0-flash')
+    model = genai.GenerativeModel('gemini-2.5-flash')
     prompt = f"""Actúa como un experto en ciberseguridad. Basándote en el siguiente texto, genera ejemplos de código relevantes. Si el texto no contiene información relacionada con código, responde diciendo "No se encontraron ejemplos de código relevantes.": {texto}"""
     try:
         response = model.generate_content(prompt)
