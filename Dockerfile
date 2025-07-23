@@ -1,5 +1,5 @@
 # Usa una imagen base de Python (elige la versión que estés usando)
-FROM python:3.11-slim-buster
+FROM python:3.11-slim-bullseye
 
 # Actualiza el sistema e instala dependencias del sistema operativo necesarias para ffmpeg y yt-dlp
 RUN apt-get update && apt-get install -y --no-install-recommends \
